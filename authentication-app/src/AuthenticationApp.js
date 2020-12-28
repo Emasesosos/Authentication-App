@@ -1,8 +1,9 @@
 import React from 'react';
+import AppRouter from './routes/AppRouter';
 
 function AuthenticationApp() {
   return (
-    <h1>Authentication App</h1>
+    <AppRouter />
   );
 }
 
