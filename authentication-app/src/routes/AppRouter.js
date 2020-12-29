@@ -8,7 +8,7 @@ import PersonalInfoEdicion from '../components/Home/PersonalInfoEdicion';
 const AppRouter = () => {
     return (
         <Router>
-            <div>
+            <div className="appRouter__container">
                 <Switch>
                     <Route exact path="/registro" component={ Registro } />
                     <Route exact path="/login" component={ Login } />

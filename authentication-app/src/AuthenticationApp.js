@@ -3,7 +3,7 @@ import AppRouter from './routes/AppRouter';
 
 function AuthenticationApp() {
   return (
-    <AppRouter />
+      <AppRouter />
   );
 }
 

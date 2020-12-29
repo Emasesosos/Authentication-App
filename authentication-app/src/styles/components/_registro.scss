@@ -1,0 +1,104 @@
+.registro__container {
+    align-items: center;
+    border: 1px solid #BDBDBD;
+    border-radius: 24px;
+    display: flex;
+    height: 634.3px;
+    justify-content: center;
+    padding: 0 58.78px;
+    padding-top: 49px;
+    width: 473.83px;
+}
+
+.registro__center {
+    height: 100%;
+}
+
+.registro__img {
+    margin-bottom: 27.46px;
+}
+
+.registro__titles {
+    margin-bottom: 34.66px;
+    h3 {
+        font-size: 18px;
+        margin-bottom: 14.5px;
+    }
+    p {
+        font-size: 16px;
+    }
+}
+
+.registro__email, 
+.registro__password {
+    position: relative;
+}
+
+.registro__email-icon,
+.registro__password-icon {
+    left: 14px;
+    position: absolute;
+    top: 11px;
+}
+
+input {
+    border: 1px solid #BDBDBD;
+    border-radius: 8px;
+    box-sizing: border-box;
+    height: 48px;
+    margin-bottom: 14.5px;
+    padding-left: 46.89px;
+    outline: none;
+    width: 100%;
+}
+
+.registro__btn {
+    height: 38px;
+    margin-bottom: 0;
+}
+
+.registro__btn {
+    background: #2F80ED;
+    border-radius: 8px;
+    color: white;
+    padding-left: 0;
+    margin-top: 8px;
+    &:active {
+        transform: scale(0.98);
+    }
+}
+
+.registro__social-networks {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 31.58px;
+    span {
+        color: #828282;
+        font-size: 14px;
+        margin-bottom: 22.51px;
+    }
+}
+
+.registro_iconos-sn {
+    align-items: center;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 27.07px;
+    width: 70%;
+}
+
+.registro__icono {
+    cursor: pointer;
+    &:active {
+        transform: scale(0.96);
+    }
+}
+
+.registro__login {
+    font-size: 14px;
+    span {
+        margin-right: 5px;
+    }
+}
