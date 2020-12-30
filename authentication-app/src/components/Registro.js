@@ -6,7 +6,6 @@ import SocialNetworks from './SocialNetworks';
 const Registro = () => {
     return (
         <div className="registro__container">
-
             <div className="registro__register">
                 <div className="registro__center">
                     <DevChallenges />
@@ -65,13 +64,12 @@ const Registro = () => {
                     
 
                 </div>
+                
+                <div className="footer__footer">
+                    <a href="https://github.com/Emasesosos">@Emasesosos</a>
+                    <a href="https://devchallenges.io/">devchallenges.io</a>
+                </div>
             </div>
-
-            <div className="footer__footer">
-                <a href="https://github.com/Emasesosos">@Emasesosos</a>
-                <a href="https://devchallenges.io/">devchallenges.io</a>
-            </div>
-
         </div>
     );
 };

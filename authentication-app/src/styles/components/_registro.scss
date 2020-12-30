@@ -1,17 +1,40 @@
+.registro__container {
+    align-items: center;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    width: 100%;
+}
+
 .registro__register {
     align-items: center;
-    border: 1px solid #BDBDBD;
-    border-radius: 24px;
+    // background: cornflowerblue;
     display: flex;
-    height: 634.3px;
+    flex-direction: column;
+    height: 700px;
     justify-content: center;
-    padding: 0 58.78px;
-    padding-top: 49px;
+    margin: 0 15px;
     width: 473.83px;
 }
 
 .registro__center {
-    height: 100%;
+    // background: gray;
+    border: 1px solid #BDBDBD;
+    border-radius: 24px;
+    height: 672px;
+    padding: 0 58.78px;
+    padding-top: 25px;
+    width: 100%;
+}
+
+@media screen and(min-width: $telefono) {
+    .registro__register {
+        height: 625px;
+    }
+    .registro__center {
+        height: 624.3px;
+        padding-top: 29px;
+    }
 }
 
 .registro__titles {

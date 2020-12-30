@@ -4,10 +4,12 @@ import DevChallenges from './Svg/DevChallenges';
 import SocialNetworks from './SocialNetworks';
 
 const Login = () => {
+
     return (
         <div className="login__container">
 
             <div className="login__login">
+
                 <div className="login__center">
 
                     <DevChallenges />
@@ -47,10 +49,10 @@ const Login = () => {
                                 value="Login" 
                             />
                         </div>
-
                     </form>
 
                     <div className="login__social-networks">
+                        
                         <span>or continue with these social profile</span>
                         <SocialNetworks />
                         <div className="login__register">
@@ -63,18 +65,22 @@ const Login = () => {
                                 Register
                             </Link>
                         </div>
+
                     </div>
                     
                 </div>
+
             </div>
 
-            <div className="footer__footer">
+            {/* <div className="footer__footer">
                 <a href="https://github.com/Emasesosos">@Emasesosos</a>
                 <a href="https://devchallenges.io/">devchallenges.io</a>
-            </div>
+            </div> */}
 
         </div>
+
     );
+
 };
 
 export default Login;
