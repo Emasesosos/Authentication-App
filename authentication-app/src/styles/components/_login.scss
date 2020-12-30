@@ -1,21 +1,22 @@
-.registro__register {
+.login__login {
     align-items: center;
     border: 1px solid #BDBDBD;
     border-radius: 24px;
     display: flex;
-    height: 634.3px;
+    height: 544.37px;
     justify-content: center;
     padding: 0 58.78px;
     padding-top: 49px;
     width: 473.83px;
 }
 
-.registro__center {
+.login__center {
     height: 100%;
+    width: 100%;
 }
 
-.registro__titles {
-    margin-bottom: 34.66px;
+.login__titles {
+    margin-bottom: 27.25px;
     h3 {
         color: #333333;
         font-size: 18px;
@@ -24,40 +25,22 @@
         line-height: 25px;
         margin-bottom: 14.5px;
     }
-    p {
-        color: #333333;
-        font-size: 16px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: 22px;
-    }
 }
 
-.registro__email, 
-.registro__password {
+.login__email, 
+.login__password {
     position: relative;
 }
 
-.registro__email-icon,
-.registro__password-icon {
+.login__email-icon,
+.login__password-icon {
     left: 14px;
     position: absolute;
     top: 11px;
 }
 
-input.email,
-input.password {
-    border: 1px solid #BDBDBD;
-    border-radius: 8px;
-    box-sizing: border-box;
-    height: 48px;
-    margin-bottom: 14.5px;
-    padding-left: 46.89px;
-    outline: none;
-    width: 100%;
-}
 
-input.registro__btn {
+input.login__btn {
     background: #2F80ED;
     border: 1px solid #2F80ED;
     border-radius: 8px;
@@ -71,7 +54,7 @@ input.registro__btn {
     }
 }
 
-.registro__social-networks {
+.login__social-networks {
     align-items: center;
     display: flex;
     flex-direction: column;
@@ -85,7 +68,7 @@ input.registro__btn {
     }
 }
 
-.registro__login {
+.login__register {
     font-size: 14px;
     margin-top: 27.5px;
     span {

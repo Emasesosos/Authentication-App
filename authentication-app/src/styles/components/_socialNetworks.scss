@@ -1,0 +1,16 @@
+.socialNet__iconos-sn {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    width: 230.79px;
+}
+
+.socialNet__google,
+.socialNet__facebook,
+.socialNet__twitter,
+.socialNet__github {
+    cursor: pointer;
+    &:active {
+        transform: scale(0.96);
+    }
+}

@@ -17,6 +17,25 @@ body {
 
 body {
     box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     margin: 0;
 }
+
+.devChallenges {
+    margin-bottom: 27.5px; 
+ }
+
+ .footer__footer {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 9.28px;
+    width: 100%;
+    a {
+        color: #BDBDBD;
+        font-size: 14px;
+        font-weight: normal;
+        line-height: 19px;
+    }
+}
+ 
