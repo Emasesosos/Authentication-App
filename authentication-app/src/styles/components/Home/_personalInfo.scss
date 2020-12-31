@@ -1,15 +1,15 @@
 .personalInfo_container {
     align-items: center;
-    background: cornflowerblue;
+    // // background: cornflowerblue;
     display: flex;
     flex-direction: column;
     height: 100%;
     width: 100%;
 }
 
-.caja1 {
+.personalInfo__header {  // caja1
     align-items: flex-start;
-    background: burlywood;
+    // // background: burlywood;
     display: flex;
     justify-content: space-between;
     height: 102px;
@@ -17,27 +17,28 @@
     width: 100%;
 }
 
-.caja2 {
+.personalInfo__main {  // caja2
     align-items: center;
-    background-color: darkcyan;
+    // // background-color: darkcyan;
     display: flex;
     flex: 1;
     flex-direction: column;
     width: 100%;
 }
 
-.caja3 {
+.personalInfo__title { // caja3
     align-items: center;
-    background: darkgoldenrod;
+    // // background: darkgoldenrod;
     height: 101.06px;
     width: 100%;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-start;
 }
 
-.caja4 {
+.personalInfo__profile { // caja4
     align-items: center;
-    background: chartreuse;
+    // // background: chartreuse;
     display: flex;
     flex: 1;
     flex-direction: column;
@@ -45,49 +46,61 @@
     width: 100%;
 }
 
-.caja5 {
+.personalInfo__columnInfo { // caja5
     background-color: white;
-    // height: 580.54px;
     flex: 1;
     width: 100%;
 }
 
-@media screen and (min-width: $telefono) {
-    .caja5 {
+@media screen and (min-width: $telefono) { // caja5
+    .personalInfo__columnInfo { 
         width: 80%;
     }
 }
 
-@media screen and (min-width: 1400px) {
-    .caja5 {
+@media screen and (min-width: 1400px) { // caja5
+    .personalInfo__columnInfo {
         flex: none;
         height: 580.54px;
     }
 }
 
-.caja6 {
+.personalInfo__informacion { // caja6
     align-items: center;
-    border: 1px solid #E0E0E0;
-    // border-radius: 24px;
+    border-radius: 24px;
     display: flex;
     flex-direction: column;
     height: 100%;
     justify-content: center;
 }
 
-@media screen and (min-width: $telefono) {
-    .caja6 {
+@media screen and (min-width: $telefono) { // caja6
+    .personalInfo__informacion {
+        border: 1px solid #E0E0E0;
         border-radius: 24px; 
     }
 }
 
-.cajas {
+.personalInfo__row { // cajas
     width: 100%;
+    &:nth-child(1),
+    &:nth-child(2) {
+        border-bottom: 1px solid #E0E0E0;
+        flex: 1.5;
+    }
+    &:nth-child(3),
+    &:nth-child(4),
+    &:nth-child(5),
+    &:nth-child(6) {
+        border-bottom: 1px solid #E0E0E0;
+        flex: 1;
+    }
+    &:nth-child(7) {
+        flex: 1;
+    }
     &:nth-child(1) {
         align-items: center;
-        border-bottom: 1px solid #E0E0E0;
         display: flex;
-        flex: 1.5;
         justify-content: space-between;
         padding: 28.32px 10px 29.51px 10px;
         width: 100%;
@@ -100,31 +113,36 @@
         }
     }
     &:nth-child(2) {
-        border-bottom: 1px solid #E0E0E0;
-        flex: 1.5;
-    }
-    &:nth-child(3) {
-        border-bottom: 1px solid #E0E0E0;
-        flex: 1;
-    }
-    &:nth-child(4) {
-        border-bottom: 1px solid #E0E0E0;
-        flex: 1;
-    }
-    &:nth-child(5) {
-        border-bottom: 1px solid #E0E0E0;
-        flex: 1;
-    }
-    &:nth-child(6) {
-        border-bottom: 1px solid #E0E0E0;
-        flex: 1;
-    }
-    &:nth-child(7) {
-        flex: 1;
+        align-items: center;
+        display: flex;
+        color: #BDBDBD;
+        padding: 11.59px 48.84px 17.53px 49.3px;
+        h4 {
+            font-size: 13px;
+        }
+        .photo {
+            width: 30%;
+        }
+        .img {
+            background: grey;
+            border-radius: 8px;
+            height: 72px;
+            opacity: 0.5;
+            position: relative;
+            width: 72px;
+        }
+        i {
+            left: 30%;
+            position: absolute;
+            top: 30%;
+        }
+        img {
+            width: 100%;
+        }
     }
 }
 
-.edit {
+.btn_edit {
     align-items: center;
     border: 1px solid #828282;
     border-radius: 12px;
@@ -137,16 +155,19 @@
     }
 }
 
-@media screen and (min-width: $tablet) {
-    .cajas {
+@media screen and (min-width: $tablet) { // cajas
+    .personalInfo__row {
         &:nth-child(1) {
             padding: 28.32px 48.84px 29.51px 49.3px;
         }
+        // &:nth-child(2) {
+        //     padding: 0 48.84px 0 49.3px;
+        // }
     }
 }
 
-@media screen and (min-width: 1400px) {
-    .cajas {
+@media screen and (min-width: 1400px) { // cajas
+    .personalInfo__row {
         &:nth-child(1) {
             flex: none;
             height: 114.63px;
@@ -155,18 +176,9 @@
             flex: none;
             height: 101.11px;
         }
-        &:nth-child(3) {
-            flex: none;
-            height: 73.26px;
-        }
-        &:nth-child(4) {
-            flex: none;
-            height: 73.26px;
-        }
-        &:nth-child(5) {
-            flex: none;
-            height: 73.26px;
-        }
+        &:nth-child(3),
+        &:nth-child(4),
+        &:nth-child(5),
         &:nth-child(6) {
             flex: none;
             height: 73.26px;
@@ -177,48 +189,3 @@
         }
     }
 }
-
-// .personalInfo_container {
-//     display: flex;
-//     flex: 1;
-//     flex-direction: column;
-//     width: 100%;
-// }
-
-// .header__container {
-//     align-items: flex-start;
-//     background: mediumaquamarine;
-//     display: flex;
-//     justify-content: space-between;
-//     height: 102px;
-//     padding: 24px 0 0 0;
-// }
-
-// .personalInfo__main {
-//     align-items: center;
-//     background: mediumslateblue;
-//     display: flex;
-//     flex: 1;
-//     flex-direction: column;
-//     justify-content: flex-start;
-//    .personalInfo__title {
-//         align-items: center;
-//         background: darkgray;
-//         display: flex;
-//         flex-direction: column;
-//         justify-content: center;
-//         margin-bottom: 44.06px;
-//    }
-//    .personalInfo__profile {
-//         background: darkslateblue;
-//         display: flex;
-//         flex: 1;
-//         flex-direction: column;
-//         max-width: 845.91px;
-//    }
-//    .table {
-//        background: white;
-//        height: 10px;
-//        width: 845.91px;
-//    }
-// }
