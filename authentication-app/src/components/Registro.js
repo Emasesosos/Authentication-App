@@ -62,7 +62,6 @@ const Registro = () => {
                         </div>
                     </div>
                     
-
                 </div>
                 
                 <div className="footer__footer">
