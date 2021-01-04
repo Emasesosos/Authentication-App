@@ -8,7 +8,9 @@ const Registro = () => {
         <div className="registro__container">
             <div className="registro__register">
                 <div className="registro__center">
-                    <DevChallenges />
+                    <div className="registro__logo">
+                        <DevChallenges />
+                    </div>
                     <div className="registro__titles">
                         <h3>Join thousands of learners from around the world</h3>
                         <p>Master web development by making real-life projects. There are multiple paths for you to choose</p>

@@ -9,7 +9,9 @@ const Login = () => {
         <div className="login__container">
             <div className="login__login">
                 <div className="login__center">
-                    <DevChallenges />
+                    <div className="login__logo">
+                        <DevChallenges />
+                    </div>
                     <div className="login__titles">
                         <h3>Login</h3>
                     </div>

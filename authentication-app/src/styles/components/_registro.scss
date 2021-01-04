@@ -29,12 +29,16 @@
 
 @media screen and(min-width: $telefono) {
     .registro__register {
-        height: 625px;
+        height: 635px;
     }
     .registro__center {
-        height: 624.3px;
+        height: 624.3px !important;
         padding-top: 29px;
     }
+}
+
+.registro__logo {
+    margin-bottom: 27.5px;
 }
 
 .registro__titles {
