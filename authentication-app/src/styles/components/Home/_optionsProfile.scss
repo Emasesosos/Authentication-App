@@ -6,7 +6,7 @@
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
     display: flex;
     flex-direction: column;
-    height: 103.61px;
+    height: 123.61px;
     //justify-content: center;
     padding: 10.05px 15.92px 15.05px 12px;
     position: absolute;
@@ -14,14 +14,62 @@
     top: 65px;
     width: 192.04px;
     .optionsProfile__myProfile {
+        align-items: center;
         background: #F2F2F2;
         border-radius: 8px;
+        cursor: pointer;
+        display: flex;
         height: 39.15px;
         margin-bottom: 10px;
         width: 164.12px;
+        p {
+            color: #4F4F4F;
+            font-size: 12px;
+            font-style: normal;
+            font-weight: 500;
+            height: 16px;
+            letter-spacing: -0.035em;
+            line-height: 16px;
+            width: 55px;   
+        }
     }
     hr {
         margin: 0;
+        margin-bottom: 20px;
         width: 164.12px;
     }
+    .optionsProfile__logout {
+        align-items: center;
+        cursor: pointer;
+        display: flex;
+        height: 39.15px;
+        width: 164.12px;
+        transition: all 0.3s ease;
+        p {
+            color: red;
+            font-size: 12px;
+            font-style: normal;
+            font-weight: 500;
+            height: 16px;
+            letter-spacing: -0.035em;
+            line-height: 16px;
+            width: 55px;   
+        }
+        &:hover {
+            background: #F2F2F2;
+            border-radius: 8px;
+        }
+    }
+}
+
+.optionsProfile__account-circle {
+    height: 16.67px;
+    margin-left: 13.75px;
+    margin-right: 11.67px;
+    width: 16.67px;
+}
+
+.optionsProfile__exit-to-app {
+    margin-left: 13.75px;
+    margin-right: 11.67px;
 }
