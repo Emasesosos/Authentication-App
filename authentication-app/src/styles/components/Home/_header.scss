@@ -1,0 +1,73 @@
+.header__container {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 32.45px;
+    margin-top: 14.75px;
+    width: 100%;
+}
+
+.header__logo {
+    margin-left: 18px;
+}
+
+.personalInfo__small-image {
+    background: gray;
+    border-radius: 8px;
+    height: 32px;
+    margin-right: 28px;
+    position: relative;
+    width: 32px;
+    i {
+        left: 22%;
+        position: absolute;
+        top: 20%;
+    }
+}
+
+.personalInfo__name,
+.personalInfo__show {
+    display: none;
+}
+
+@media screen and (min-width: $tablet) {
+    .personalInfo__estatus {
+        display: flex;
+        .personalInfo__name {
+            align-items: center;
+            display: flex;
+            color: #333333;
+            font-size: 12px;
+            font-style: normal;
+            font-weight: bold;
+            line-height: 16px;
+            letter-spacing: -0.035em;
+            margin-right: 19.41px;
+            width: 70px;
+        }
+    }
+    .personalInfo__small-image {
+        margin-right: 11px;
+    }
+    .personalInfo__name,
+    .personalInfo__show {
+        display: block;
+    }
+    .personalInfo__show {
+        align-items: center;
+        cursor: pointer;
+        display: flex;
+        height: 32px;
+        justify-content: center;
+        position: relative;
+        width: 32px;
+        .personalInfo__arrow {
+            height: 4.59px;
+            width: 7.18px;
+        }
+        i {
+            left: 25%;
+            top: 28%;
+        }
+    }
+}

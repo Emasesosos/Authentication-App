@@ -1,34 +1,25 @@
 .personalInfo_container {
     align-items: center;
-    // // background: cornflowerblue;
+    // background: cornflowerblue;
     display: flex;
     flex-direction: column;
     height: 100%;
+    position: relative;
     width: 100%;
 }
 
-.personalInfo__header {  // caja1
-    align-items: flex-start;
-    // // background: burlywood;
-    display: flex;
-    justify-content: space-between;
-    height: 102px;
-    padding: 24px 0 0 0;
-    width: 100%;
-}
-
-.personalInfo__main {  // caja2
+.personalInfo__main {
     align-items: center;
-    // // background-color: darkcyan;
+    // background-color: darkcyan;
     display: flex;
     flex: 1;
     flex-direction: column;
     width: 100%;
 }
 
-.personalInfo__title { // caja3
+.personalInfo__title {
     align-items: center;
-    // // background: darkgoldenrod;
+    // background: darkgoldenrod;
     height: 101.06px;
     width: 100%;
     display: flex;
@@ -36,156 +27,223 @@
     justify-content: flex-start;
 }
 
-.personalInfo__profile { // caja4
-    align-items: center;
-    // // background: chartreuse;
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    justify-content: flex-start;
-    width: 100%;
-}
-
-.personalInfo__columnInfo { // caja5
-    background-color: white;
+.personalInfo__columnInfo {
+    // background-color: red;
     flex: 1;
     width: 100%;
 }
 
-@media screen and (min-width: $telefono) { // caja5
-    .personalInfo__columnInfo { 
-        width: 80%;
-    }
-}
-
-@media screen and (min-width: 1400px) { // caja5
-    .personalInfo__columnInfo {
-        flex: none;
-        height: 580.54px;
-    }
-}
-
-.personalInfo__informacion { // caja6
-    align-items: center;
-    border-radius: 24px;
+.personalInfo__row {
     display: flex;
-    flex-direction: column;
-    height: 100%;
-    justify-content: center;
-}
-
-@media screen and (min-width: $telefono) { // caja6
-    .personalInfo__informacion {
-        border: 1px solid #E0E0E0;
-        border-radius: 24px; 
-    }
-}
-
-.personalInfo__row { // cajas
-    width: 100%;
-    &:nth-child(1),
-    &:nth-child(2) {
-        border-bottom: 1px solid #E0E0E0;
-        flex: 1.5;
-    }
-    &:nth-child(3),
-    &:nth-child(4),
-    &:nth-child(5),
-    &:nth-child(6) {
-        border-bottom: 1px solid #E0E0E0;
-        flex: 1;
-    }
-    &:nth-child(7) {
-        flex: 1;
-    }
+    justify-content: space-between;
+    padding: 0 17.11px 0 20.61px;
     &:nth-child(1) {
-        align-items: center;
-        display: flex;
-        justify-content: space-between;
-        padding: 28.32px 10px 29.51px 10px;
-        width: 100%;
+        padding-left: 22.38px;
         h4 {
+            color: black;
             font-size: 24px;
         }
         p {
             color: #828282;
             font-size: 13px;
+            width: 200px;
         }
     }
-    &:nth-child(2) {
+    h4 {
+        color: #BDBDBD;
+        font-size: 13px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 18px;
+        letter-spacing: -0.035em;
+    }
+}
+
+.profile-container {
+    align-items: center;
+    display: flex;
+    margin-bottom: 27.51px;
+    .btn_edit {
+        align-items: center;
+        border: 1px solid #828282;
+        border-radius: 12px;
+        display: flex;
+        height: 38px;
+        justify-content: center;
+        width: 95.34px;
+        a {
+            color: #828282;
+        }
+    }
+    .profile {
+        h4 {
+            margin-bottom: 4px;
+        }
+    }
+}
+
+@media screen and (min-width: $tablet) {
+    .personalInfo__row {
+        &:nth-child(1) {
+            margin-top: 28.32px;
+            p {
+                width: 300px;
+            }
+        }
+    }
+}
+
+
+/* PHOTO */
+
+.photo-container {
+    align-items: center;
+    border-bottom: 1px solid #E0E0E0;
+    display: flex;
+    padding-bottom: 17.39px;
+    .img {
+        background: gray;
+        border-radius: 8px;
+        height: 72px;
+        position: relative;
+        width: 72px;
+        i {
+            left: 21px;
+            position: absolute;
+            top: 22px;
+        }
+    }
+}
+
+@media screen and (min-width: $tablet) {
+    .photo-container {
+        border-top: 1px solid #E0E0E0;
+        padding-top: 11.59px;
+        .photo {
+            flex: 30%;
+        }
+        .img-container {
+            flex: 70%;
+        }
+    }
+    .name-container {
+        .name {
+            flex: 30%;
+        }
+        .names {
+            display: flex;
+            flex: 70%;
+        }
+    }
+    .bio-container {
+        .bio {
+            flex: 30%;
+        }
+        .bios {
+            flex: 70%;
+            p {
+                width: 100% !important;
+            }
+        }
+    }
+    .phone-container {
+        .phone {
+            flex: 30%;
+        }
+        .phones {
+            flex: 70%;
+        }
+    }
+    .email-container {
+        .email {
+            flex: 30%;
+        }
+        .emails {
+            flex: 70%;
+        }
+    }
+    .password-container {
+        .password {
+            flex: 30%;
+        }
+        .passwords {
+            flex: 70%;
+        }
+    }
+}
+
+
+/* NAME */
+
+.name-container {
+    border-bottom: 1px solid #E0E0E0;
+    padding-bottom: 41.36px;
+    margin-top: 31.29px;
+}
+
+
+/* BIO */
+
+.bio-container {
+    border-bottom: 1px solid #E0E0E0;
+    padding-bottom: 27.21px;
+    margin-top: 29.29px;
+    .bios {
+        p {
+            width: 200px;
+        }
+    }
+}
+
+.phone-container,
+.email-container,
+.password-container {
+    border-bottom: 1px solid #E0E0E0;
+    padding-bottom: 27.21px;
+    margin-top: 29.29px;
+}
+
+.password-container {
+    margin-bottom: 20px;
+}
+
+@media screen and (min-width: 768px) {
+    .personalInfo__columnInfo {
         align-items: center;
         display: flex;
-        color: #BDBDBD;
-        padding: 11.59px 48.84px 17.53px 49.3px;
-        h4 {
-            font-size: 13px;
-        }
-        .photo {
-            width: 30%;
-        }
-        .img {
-            background: grey;
-            border-radius: 8px;
-            height: 72px;
-            opacity: 0.5;
-            position: relative;
-            width: 72px;
-        }
-        i {
-            left: 30%;
-            position: absolute;
-            top: 30%;
-        }
-        img {
-            width: 100%;
-        }
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+    .personalInfo__informacion {
+        // background: coral;
+        border: 1px solid #E0E0E0;
+        box-sizing: border-box;
+        border-radius: 12px;
+        height: 590.54px;
+        width: 600px;
+    }
+    .photo-container {
+        padding-bottom: 17.53px;
+        margin-top: 11.59px;
+    }
+    .name-container,
+    .bio-container,
+    .phone-container,
+    .email-container {
+        padding-bottom: 24.26px;
+        margin-top: 24px;
+    }
+    .password-container {
+        border-bottom: none;
+        margin-top: 24px;
+        padding-bottom: 14.64px;
     }
 }
 
-.btn_edit {
-    align-items: center;
-    border: 1px solid #828282;
-    border-radius: 12px;
-    display: flex;
-    height: 38px;
-    justify-content: center;
-    width: 95.34px;
-    a {
-        color: #828282;
-    }
-}
-
-@media screen and (min-width: $tablet) { // cajas
-    .personalInfo__row {
-        &:nth-child(1) {
-            padding: 28.32px 48.84px 29.51px 49.3px;
-        }
-        // &:nth-child(2) {
-        //     padding: 0 48.84px 0 49.3px;
-        // }
-    }
-}
-
-@media screen and (min-width: 1400px) { // cajas
-    .personalInfo__row {
-        &:nth-child(1) {
-            flex: none;
-            height: 114.63px;
-        }
-        &:nth-child(2) {
-            flex: none;
-            height: 101.11px;
-        }
-        &:nth-child(3),
-        &:nth-child(4),
-        &:nth-child(5),
-        &:nth-child(6) {
-            flex: none;
-            height: 73.26px;
-        }
-        &:nth-child(7) {
-            flex: none;
-            height: 74px;
-        }
+@media screen and (min-width: 900px) {
+    .personalInfo__informacion {
+        // background: coral;
+        height: 570.54px;
+        width: 845px;
     }
 }

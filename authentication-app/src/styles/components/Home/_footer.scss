@@ -1,0 +1,20 @@
+.footer__footer {
+    align-items: flex-start;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 15px;
+    padding-bottom: 14.64px;
+    width: 100%;
+    a {
+        color: #BDBDBD;
+        font-size: 14px;
+        font-weight: normal;
+        line-height: 19px;
+    }
+}
+
+@media screen and (min-width: $tablet) {
+    .footer__footer {
+        padding: 0 0 14.64px 0;
+    }
+}

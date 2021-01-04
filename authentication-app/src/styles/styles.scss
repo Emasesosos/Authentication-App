@@ -1,10 +1,15 @@
 /* GENERAL */
+
 @import './base/settings';
 @import './base/base';
 
 /* COMPONENTS */
+
 @import './routes/routes';
 @import './components/registro';
 @import './components/login';
 @import './components/socialNetworks';
+@import './components/Home/header';
+@import './components/Home/optionsProfile';
 @import './components/Home/personalInfo';
+@import './components//Home/footer';

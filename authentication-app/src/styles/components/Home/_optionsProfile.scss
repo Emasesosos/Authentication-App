@@ -1,0 +1,27 @@
+.optionsProfile__container {
+    align-items: center;
+    background: #FFFFFF;
+    border: 1px solid #E0E0E0;
+    border-radius: 12px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    height: 103.61px;
+    //justify-content: center;
+    padding: 10.05px 15.92px 15.05px 12px;
+    position: absolute;
+    right: 10px;
+    top: 65px;
+    width: 192.04px;
+    .optionsProfile__myProfile {
+        background: #F2F2F2;
+        border-radius: 8px;
+        height: 39.15px;
+        margin-bottom: 10px;
+        width: 164.12px;
+    }
+    hr {
+        margin: 0;
+        width: 164.12px;
+    }
+}

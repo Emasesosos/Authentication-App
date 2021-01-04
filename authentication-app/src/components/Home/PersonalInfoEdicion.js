@@ -1,9 +1,10 @@
 import React from 'react';
+import { Header } from './Header';
 
 const PersonalInfoEdicion = () => {
     return (
-        <div>
-            PersonalInfoEdicion
+        <div className="edicion__container">
+            <Header />
         </div>
     );
 };
