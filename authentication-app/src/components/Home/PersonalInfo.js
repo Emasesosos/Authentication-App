@@ -1,10 +1,14 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Footer } from './Footer';
 import { Header } from './Header';
 import { OptionsProfile } from './OptionsProfile';
 
 const PersonalInfo = () => {
+
+    const  { name, bio, phone, email, password }  = useSelector(state => state.profileInfo);
+
     return (
         <div className="personalInfo_container">
 

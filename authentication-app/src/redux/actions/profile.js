@@ -1,11 +1,12 @@
 import { types } from './../types/types';
 
-export const getData = (res) => {
+export const getData = (email, password) => {
 
     return {
         type: types.GET_PROFILE_INFO,
         payload: {
-            profileInfo: res
+            email,
+            password
         }
     };
 

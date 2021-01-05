@@ -1,10 +1,37 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import useForm from '../hooks/useForm';
+import { getData } from '../redux/actions/profile';
 import DevChallenges from './Svg/DevChallenges';
 import SocialNetworks from './SocialNetworks';
 
 const Registro = () => {
+
+    const dispatch = useDispatch();
+
+    const initialForm = {
+        email: 'correo@correo.com',
+        password: '123456',
+    };
+
+    const [ formValues, handleInputChange ] = useForm(initialForm);
+
+    const { email, password } = formValues;
+
+    const handleRegister = (e) => {
+        e.preventDefault();
+        // console.log(formValues);
+        if(password.length < 6) {
+            return Swal.fire('Error', 'La contraseña debe de ser de al menos 6 caracteres', 'error');
+        }
+        console.log(formValues);
+        dispatch(getData(email, password));
+    };
+
     return (
+
         <div className="registro__container">
             <div className="registro__register">
                 <div className="registro__center">
@@ -17,7 +44,7 @@ const Registro = () => {
                     </div>
 
                     <form
-                        // onSubmit={ handleRegister }
+                        onSubmit={ handleRegister }
                     >
                         <div className="registro__email">
                             <i className="material-icons md-dark md-inactive registro__email-icon" style={{color: "#828282"}}>email</i>
@@ -26,8 +53,8 @@ const Registro = () => {
                                 placeholder="Email"
                                 name="email"
                                 className="email"
-                                // value={ email }
-                                // onChange={ handleInputChange }
+                                value={ email }
+                                onChange={ handleInputChange }
                             />
                         </div>
                         <div className="registro__password">
@@ -35,17 +62,18 @@ const Registro = () => {
                             <input
                                 type="password"
                                 placeholder="Password" 
-                                name="password1"
+                                name="password"
                                 className="password"
-                                // value={ password1 }
-                                // onChange={ handleInputChange }
+                                value={ password }
+                                onChange={ handleInputChange }
                             />
                         </div>
                         <div className="">
                             <input 
                                 type="submit" 
                                 className="registro__btn" 
-                                value="Start coding now" />
+                                value="Start coding now" 
+                            />
                         </div>
                     </form>
 
@@ -72,7 +100,9 @@ const Registro = () => {
                 </div>
             </div>
         </div>
+
     );
+
 };
 
 export default Registro;
