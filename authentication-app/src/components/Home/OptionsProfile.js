@@ -1,11 +1,21 @@
 import React from 'react';
+import { useHistory } from "react-router-dom";
 
 export const OptionsProfile = () => {
+
+    let history = useHistory();
+
+    const handleMyProfile = () => {
+        history.push('/');
+    };
 
     return (
 
         <div className="optionsProfile__container">
-            <div className="optionsProfile__myProfile">
+            <div 
+                className="optionsProfile__myProfile"
+                onClick={ handleMyProfile }
+            >
                 <div className="optionsProfile__account-circle">
                     <i className="material-icons md-dark md-inactive" style={{color: "#4F4F4F", fontSize: "16.67px"}}>account_circle</i>
                 </div>

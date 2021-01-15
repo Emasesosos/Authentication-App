@@ -11,3 +11,25 @@ export const getData = (email, password) => {
     };
 
 };
+
+export const getOptionsProfileTrue = () => {
+
+    return {
+        type: types.GET_OPTIONS_PROFILE,
+        payload: {
+            optionProfile: true
+        }
+    };
+
+};
+
+export const getOptionsProfileFalse = () => {
+
+    return {
+        type: types.GET_OPTIONS_PROFILE,
+        payload: {
+            optionProfile: false
+        }
+    };
+
+};

@@ -12,6 +12,7 @@ export const types = {
     // GET_JOB_DETAIL: 'get-job-detail',
     // DELETE_JOB_DETAIL: 'delete-job-detail'
 
-    GET_PROFILE_INFO: 'get-profile-info'
+    GET_PROFILE_INFO: 'get-profile-info',
+    GET_OPTIONS_PROFILE: 'get-options-profile'
 
 };

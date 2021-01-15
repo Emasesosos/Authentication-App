@@ -1,20 +1,27 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { getOptionsProfileFalse } from '../../redux/actions/profile';
 import { Footer } from './Footer';
 import { Header } from './Header';
 import { OptionsProfile } from './OptionsProfile';
 
 const PersonalInfo = () => {
 
-    const  { name, bio, phone, email, password }  = useSelector(state => state.profileInfo);
+    const dispatch = useDispatch();
+
+    const  { name, bio, phone, email, password, optionProfile }  = useSelector(state => state.profileInfo);
+
+    useEffect(() => {
+        dispatch(getOptionsProfileFalse());
+    }, [dispatch]);
 
     return (
         <div className="personalInfo_container">
 
             <Header />
 
-            { true === true ? <OptionsProfile /> : null }
+            { optionProfile && <OptionsProfile /> }
             
             <main className="personalInfo__main">
                 <div className="personalInfo__title">

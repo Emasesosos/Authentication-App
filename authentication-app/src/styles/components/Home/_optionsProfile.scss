@@ -4,7 +4,7 @@
     border: 1px solid #E0E0E0;
     border-radius: 12px;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
-    display: none;
+    display: flex;
     flex-direction: column;
     height: 123.61px;
     //justify-content: center;
@@ -15,12 +15,12 @@
     width: 192.04px;
     .optionsProfile__myProfile {
         align-items: center;
-        background: #F2F2F2;
         border-radius: 8px;
         cursor: pointer;
         display: flex;
         height: 39.15px;
         margin-bottom: 10px;
+        transition: background 0.3s ease;
         width: 164.12px;
         p {
             color: #4F4F4F;
@@ -31,6 +31,10 @@
             letter-spacing: -0.035em;
             line-height: 16px;
             width: 55px;   
+        }
+        &:hover {
+            background: #F2F2F2;
+            border-radius: 8px;
         }
     }
     hr {

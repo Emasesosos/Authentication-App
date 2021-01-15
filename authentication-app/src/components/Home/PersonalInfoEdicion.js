@@ -1,10 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Header } from './Header';
 import { OptionsProfile } from './OptionsProfile';
 import { Footer } from './Footer';
+import { getOptionsProfileFalse } from '../../redux/actions/profile';
 
 const PersonalInfoEdicion = () => {
+
+    const dispatch = useDispatch();
+
+    const  { name, bio, phone, email, password, optionProfile }  = useSelector(state => state.profileInfo);
+
+    useEffect(() => {
+        dispatch(getOptionsProfileFalse());
+    }, [dispatch]);
 
     return (
 
@@ -12,7 +22,7 @@ const PersonalInfoEdicion = () => {
 
             <Header />
 
-            { true === true ? <OptionsProfile /> : null }
+            { optionProfile && <OptionsProfile /> }
 
             <main className="caja0">
 
