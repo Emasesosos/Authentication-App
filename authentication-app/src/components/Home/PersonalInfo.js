@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getOptionsProfileFalse } from '../../redux/actions/profile';
@@ -7,6 +7,10 @@ import { Header } from './Header';
 import { OptionsProfile } from './OptionsProfile';
 
 const PersonalInfo = () => {
+
+    const [image, setImage] = useState({
+        imageUrl: 'https://res.cloudinary.com/emasesosos/image/upload/v1610838658/addImage_siw6ys.png'
+    });
 
     const dispatch = useDispatch();
 
@@ -48,8 +52,8 @@ const PersonalInfo = () => {
                             </div>
                             <div className="img-container">
                                 <div className="img">
-                                    <i className="material-icons md-dark md-inactive registro__email-icon" style={{color: "white", fontSize: "30px"}}>camera_alt</i>
-                                    <img src="" alt=""/>
+                                    { /* <i className="material-icons md-dark md-inactive registro__email-icon" style={{color: "white", fontSize: "30px"}}>camera_alt</i> */ }
+                                    <img src={image.imageUrl} alt=""/>
                                 </div>
                             </div>
                         </div>

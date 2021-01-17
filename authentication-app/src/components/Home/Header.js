@@ -5,6 +5,10 @@ import DevChallenges from '../Svg/DevChallenges';
 
 export const Header = () => {
 
+    const [image, setImage] = useState({
+        imageUrl: 'https://res.cloudinary.com/emasesosos/image/upload/v1610838658/addImage_siw6ys.png'
+    });
+
     const dispatch = useDispatch();
     const  { optionProfile }  = useSelector(state => state.profileInfo);
 
@@ -38,8 +42,7 @@ export const Header = () => {
             
             <div className="personalInfo__estatus">
                 <div className="personalInfo__small-image">
-                    <i className="material-icons md-dark md-inactive registro__email-icon" style={{color: "white", fontSize: "18px"}}>camera_alt</i>
-                    <img src="" alt=""/>
+                    <img src={image.imageUrl} alt=""/>
                 </div>
                 <div className="personalInfo__name">
                     <p>Emmanuel Martínez</p>

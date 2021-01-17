@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Header } from './Header';
@@ -7,6 +7,10 @@ import { Footer } from './Footer';
 import { getOptionsProfileFalse } from '../../redux/actions/profile';
 
 const PersonalInfoEdicion = () => {
+
+    const [image, setImage] = useState({
+        imageUrl: 'https://res.cloudinary.com/emasesosos/image/upload/v1610838658/addImage_siw6ys.png'
+    });
 
     const dispatch = useDispatch();
 
@@ -44,19 +48,26 @@ const PersonalInfoEdicion = () => {
                             <p>Changes will be reflected to every services</p>
                         </div>
 
-                        <div className="edicion__img">
-                            <div className="edicion_img-photo">
-                                <i className="material-icons md-dark md-inactive registro__email-icon" style={{color: "white", fontSize: "30px"}}>camera_alt</i>
-                                <img src="" alt=""/>
-                            </div>
-                            <div className="edicion__img-text">
-                                <p>Change Photo</p>
-                            </div>
-                        </div>
-
                         <form
                             // onSubmit={ handleRegister }
                         >
+                            <div className="edicion__img">
+                                <div className="custom-file">
+                                    <i className="material-icons md-dark md-inactive registro__email-icon" style={{color: "white", fontSize: "20px"}}>camera_alt</i>
+                                    <img src={image.imageUrl} alt=""/>
+                                    <input 
+                                        type="file" 
+                                        name="image" 
+                                        className="custom-file-input" 
+                                        id="inputGroupFile01"
+                                        // value={ image }
+                                        // onChange={ handleInputChange }
+                                    />
+                                </div>
+                                <div className="edicion__img-text">
+                                    <p>Change Photo</p>
+                                </div>
+                            </div>
                             <div className="edicion__group">
                                 <label htmlFor="">Name</label>
                                 <input

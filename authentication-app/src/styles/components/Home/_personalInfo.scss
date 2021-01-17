@@ -102,7 +102,7 @@
     display: flex;
     padding-bottom: 17.39px;
     .img {
-        background: gray;
+        // background: gray;
         border-radius: 8px;
         height: 72px;
         position: relative;
@@ -124,6 +124,9 @@
         }
         .img-container {
             flex: 70%;
+            img {
+                width: 100%;
+            }
         }
     }
     .name-container {
