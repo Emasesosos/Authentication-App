@@ -1,24 +1,55 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import useForm from '../../hooks/useForm';
 import { Header } from './Header';
 import { OptionsProfile } from './OptionsProfile';
 import { Footer } from './Footer';
 import { getOptionsProfileFalse } from '../../redux/actions/profile';
 
+
 const PersonalInfoEdicion = () => {
 
     const [image, setImage] = useState({
-        imageUrl: 'https://res.cloudinary.com/emasesosos/image/upload/v1610838658/addImage_siw6ys.png'
+        imageUrl: 'https://res.cloudinary.com/emasesosos/image/upload/v1610838658/addImage_siw6ys.png',
+        name: 'Edit Name', 
+        bio: 'Edit Bio', 
+        phone: 'Edit Phone', 
+        email: 'correo@correo.com.mx', 
+        password: 'Edit Password', 
     });
 
     const dispatch = useDispatch();
 
-    const  { name, bio, phone, email, password, optionProfile }  = useSelector(state => state.profileInfo);
+    // const  { name, bio, phone, email, password, optionProfile }  = useSelector(state => state.profileInfo);
+    const  { optionProfile }  = useSelector(state => state.profileInfo);
 
     useEffect(() => {
         dispatch(getOptionsProfileFalse());
     }, [dispatch]);
+
+    const initialForm = {
+        imageUrl: image.imageUrl, 
+        name: image.name,
+        bio: image.bio,
+        phone: image.phone,
+        email: image.email,
+        password: image.password,
+    };
+
+    const [ formValues, handleInputChange ] = useForm(initialForm);
+    const  { imageUrl, name, bio, phone, email, password }  = formValues;
+
+    const handleEditUser = (e) => {
+        e.preventDefault();
+        console.log(formValues);
+    };
+
+    // let history = useHistory();
+
+    // const handleMyProfile = () => {
+    //     history.push('/');
+    // };
 
     return (
 
@@ -49,19 +80,19 @@ const PersonalInfoEdicion = () => {
                         </div>
 
                         <form
-                            // onSubmit={ handleRegister }
+                            onSubmit={ handleEditUser }
                         >
                             <div className="edicion__img">
                                 <div className="custom-file">
                                     <i className="material-icons md-dark md-inactive registro__email-icon" style={{color: "white", fontSize: "20px"}}>camera_alt</i>
-                                    <img src={image.imageUrl} alt=""/>
+                                    <img src={imageUrl} alt=""/>
                                     <input 
                                         type="file" 
-                                        name="image" 
+                                        name="imageUrl" 
                                         className="custom-file-input" 
                                         id="inputGroupFile01"
-                                        // value={ image }
-                                        // onChange={ handleInputChange }
+                                        // value={ imageUrl }
+                                        onChange={ handleInputChange }
                                     />
                                 </div>
                                 <div className="edicion__img-text">
@@ -75,15 +106,15 @@ const PersonalInfoEdicion = () => {
                                     placeholder="Enter Your Name..."
                                     name="name"
                                     className="edicion__control"
-                                    // value={ name }
-                                    // onChange={ handleInputChange }
+                                    value={ name }
+                                    onChange={ handleInputChange }
                                 />
                             </div>
                             <div className="edicion__group">
                                 <label htmlFor="">Bio</label>
                                 <textarea 
-                                    // value={bio} 
-                                    // onChange={this.handleChange} 
+                                    value={bio} 
+                                    onChange={ handleInputChange } 
                                     placeholder="Enter Your Bio..."
                                     name="bio"
                                     className="edicion__textarea"
@@ -96,8 +127,8 @@ const PersonalInfoEdicion = () => {
                                     placeholder="Enter Your Phone..."
                                     name="phone"
                                     className="edicion__control"
-                                    // value={ phone }
-                                    // onChange={ handleInputChange }
+                                    value={ phone }
+                                    onChange={ handleInputChange }
                                 />
                             </div>
                             <div className="edicion__group">
@@ -107,8 +138,8 @@ const PersonalInfoEdicion = () => {
                                     placeholder="Enter Your Email..."
                                     name="email"
                                     className="edicion__control"
-                                    // value={ email }
-                                    // onChange={ handleInputChange }
+                                    value={ email }
+                                    onChange={ handleInputChange }
                                 />
                             </div>
                             <div className="edicion__group">
@@ -116,17 +147,19 @@ const PersonalInfoEdicion = () => {
                                 <input
                                     type="password"
                                     placeholder="Enter Your New Password..."
-                                    name="phone"
+                                    name="password"
                                     className="edicion__control"
-                                    // value={ password }
-                                    // onChange={ handleInputChange }
+                                    value={ password }
+                                    onChange={ handleInputChange }
                                 />
                             </div>
                             <div className="">
                                 <input 
                                     type="submit" 
                                     className="edicion__btn" 
-                                    value="Save" />
+                                    value="Save" 
+                                    // onClick={ handleMyProfile }
+                                />
                             </div>
                         </form>
 
