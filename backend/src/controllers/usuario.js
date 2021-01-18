@@ -1,6 +1,14 @@
 const { response } = require('express');
 const bcrypt = require('bcryptjs');
 const Usuario = require('../models/Usuario');
+const cloudinary = require('cloudinary');
+cloudinary.config({
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET
+});
+
+const fs = require('fs-extra'); // Permite trabajar los archivos en el SO
 
 // Obtener Usuario
 const getUsuario = async(req, res = response) => {
@@ -33,6 +41,7 @@ const actualizarUsuario = async(req, res = response) => {
 
     const usuarioId = req.params.id;
     const { imageUrl, password } = req.body;
+    const result = await cloudinary.v2.uploader.upload(req.file.path);
 
     try {
 
@@ -50,13 +59,19 @@ const actualizarUsuario = async(req, res = response) => {
         const nuevoUsuario = {
             ...req.body
         };
-        console.log({ nuevoUsuario });
+
+        // Url cloudinary
+        nuevoUsuario.imageUrl = result.url;
+        // 
 
         // Encriptar nueva contraseña
         const salt = bcrypt.genSaltSync();
         nuevoUsuario.password = bcrypt.hashSync(password, salt);
 
+        console.log({ nuevoUsuario });
+
         const usuarioActualizado = await Usuario.findByIdAndUpdate(usuarioId, nuevoUsuario, { new: true });
+        await fs.unlink(req.file.path);
 
         res.status(201).json({
             ok: true,
