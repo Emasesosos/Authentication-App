@@ -18,7 +18,14 @@ router.get('/:id', getUsuario);
 router.get('/', getUsuarios);
 
 // Actualizar Usuario
-router.put('/:id', actualizarUsuario);
+router.put(
+    '/:id', [
+        check('email', 'El email es obligatorio').isEmail(),
+        check('password', 'El password debe de ser de 6 caracteres').isLength({ min: 6 }),
+        validarCampos
+    ],
+    actualizarUsuario
+);
 
 
 module.exports = router;
