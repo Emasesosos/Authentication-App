@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import useForm from '../hooks/useForm';
-import { getData } from '../redux/actions/profile';
+import { startRegister } from '../redux/actions/auth';
 import DevChallenges from './Svg/DevChallenges';
 import SocialNetworks from './SocialNetworks';
 
@@ -27,7 +27,7 @@ const Registro = () => {
             return Swal.fire('Error', 'La contraseña debe de ser de al menos 6 caracteres', 'error');
         }
         console.log(formValues);
-        dispatch(getData(email, password));
+        dispatch(startRegister(email, password));
     };
 
     return (

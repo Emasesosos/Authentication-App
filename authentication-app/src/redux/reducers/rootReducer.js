@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
-import { profileReducer } from './../reducers/profileReducer';
+import { authReducer } from './authReducer';
+import { profileReducer } from './profileReducer';
 
 export const rootReducer = combineReducers({
 
+    auth: authReducer,
     profileInfo: profileReducer,
     
 });

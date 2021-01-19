@@ -1,9 +1,29 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { startLogin } from './../redux/actions/auth';
 import DevChallenges from './Svg/DevChallenges';
 import SocialNetworks from './SocialNetworks';
+import useForm from '../hooks/useForm';
 
 const Login = () => {
+
+    const dispatch = useDispatch();
+
+    const initialForm = {
+        email: '',
+        password: '',
+    };
+
+    const [ formValues, handleInputChange ] = useForm(initialForm);
+
+    const { email, password } = formValues;
+
+    const handleLogin = (e) => {
+        e.preventDefault();
+        // console.log(formValues);
+        dispatch(startLogin(email, password));
+    };
 
     return (
         <div className="login__container">
@@ -17,7 +37,7 @@ const Login = () => {
                     </div>
 
                     <form
-                        // //onSubmit={ handleLogin }
+                        onSubmit={ handleLogin }
                     >
                         <div className="login__email">
                             <i className="material-icons md-dark md-inactive login__email-icon" style={{color: "#828282"}}>email</i>
@@ -26,8 +46,8 @@ const Login = () => {
                                 className="email"
                                 placeholder="Email"
                                 name="email"
-                                // //value={ email }
-                                // //onChange={ handleInputChange }
+                                value={ email }
+                                onChange={ handleInputChange }
                             />
                         </div>
                         <div className="login__password">
@@ -37,8 +57,8 @@ const Login = () => {
                                 className="password"
                                 placeholder="Password"
                                 name="password"
-                                // //value={ password }
-                                // //onChange={ handleInputChange }
+                                value={ password }
+                                onChange={ handleInputChange }
                             />
                         </div>
                         <div className="">
