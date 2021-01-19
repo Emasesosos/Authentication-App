@@ -11,7 +11,10 @@ export const types = {
 
     // User: get user
     GET_PROFILE_INFO: 'get-profile-info',
-    GET_OPTIONS_PROFILE: 'get-options-profile'
+    GET_OPTIONS_PROFILE: 'get-options-profile',
+
+    // User: Logout
+    PROFILE_LOGOUT: '[Pofile] Profile Logout'
 
     // MAKE_REQUEST_GENERAL: 'make-request-general',
     // MAKE_REQUEST_PARAMS: 'make-request-params',

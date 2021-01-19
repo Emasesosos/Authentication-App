@@ -23,6 +23,10 @@ export function profileReducer(state = initialState, action) {
                 ...state,
                 ...action.payload
             }
+        case types.PROFILE_LOGOUT: 
+            return {
+                ...initialState
+            }
         default:
             return state;
 

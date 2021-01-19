@@ -83,8 +83,7 @@ const Registro = () => {
                         <div className="registro__login">
                             <span>Adready a member?</span>
                             <Link 
-                                // to="/auth/login"
-                                to="/login"
+                                to="/auth/login"
                                 className=""
                             >
                                 Login

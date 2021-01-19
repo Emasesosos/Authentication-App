@@ -33,3 +33,12 @@ export const getOptionsProfileFalse = () => {
     };
 
 };
+
+// Event Logout
+export const profileLogout = () => {
+
+    return {
+        type: types.PROFILE_LOGOUT
+    };
+
+};

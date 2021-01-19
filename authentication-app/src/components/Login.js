@@ -76,8 +76,8 @@ const Login = () => {
                         <div className="login__register">
                             <span>Don´t have an account yet?</span>
                             <Link 
-                                // to="/auth/login"
-                                to="/registro"
+                                to="/auth/register"
+                                // to="/registro"
                                 className=""
                             >
                                 Register
