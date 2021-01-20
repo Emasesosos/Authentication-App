@@ -1,11 +1,12 @@
 import { types } from './../types/types';
 
 const initialState = {
+    id: '',
+    imageUrl: '',
     name: '',
     bio: '',
     phone: '',
     email: '',
-    password: '',
     optionProfile: ''
 }
 

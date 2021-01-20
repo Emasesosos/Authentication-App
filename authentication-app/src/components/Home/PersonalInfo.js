@@ -1,24 +1,26 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { getOptionsProfileFalse } from '../../redux/actions/profile';
+import { getData, getOptionsProfileFalse } from '../../redux/actions/profile';
 import { Footer } from './Footer';
 import { Header } from './Header';
 import { OptionsProfile } from './OptionsProfile';
 
 const PersonalInfo = () => {
 
-    const [image, setImage] = useState({
-        imageUrl: 'https://res.cloudinary.com/emasesosos/image/upload/v1610838658/addImage_siw6ys.png'
-    });
-
     const dispatch = useDispatch();
 
-    const  { name, bio, phone, email, password, optionProfile }  = useSelector(state => state.profileInfo);
+    const  { uid }  = useSelector(state => state.auth);
 
     useEffect(() => {
         dispatch(getOptionsProfileFalse());
     }, [dispatch]);
+
+    useEffect(() => {
+        dispatch(getData(uid));
+    }, [dispatch, uid]);
+
+    const  { imageUrl, name, bio, phone, email, optionProfile }  = useSelector(state => state.profileInfo);
 
     return (
         <div className="personalInfo_container">
@@ -52,8 +54,7 @@ const PersonalInfo = () => {
                             </div>
                             <div className="img-container">
                                 <div className="img">
-                                    { /* <i className="material-icons md-dark md-inactive registro__email-icon" style={{color: "white", fontSize: "30px"}}>camera_alt</i> */ }
-                                    <img src={image.imageUrl} alt=""/>
+                                    <img src={ imageUrl } alt=""/>
                                 </div>
                             </div>
                         </div>
@@ -62,7 +63,7 @@ const PersonalInfo = () => {
                                 <h4>NAME</h4>
                             </div>
                             <div className="names">
-                                <p>Emmanuel Martínez</p>
+                                <p>{ name }</p>
                             </div>
                         </div>
                         <div className="personalInfo__row bio-container">
@@ -70,7 +71,7 @@ const PersonalInfo = () => {
                                 <h4>BIO</h4>
                             </div>
                             <div className="bios">
-                                <p>I am a software developer and a big fan of devchallenges...</p>
+                                <p>{ bio }</p>
                             </div>
                         </div>
                         <div className="personalInfo__row phone-container">
@@ -78,7 +79,7 @@ const PersonalInfo = () => {
                                 <h4>PHONE</h4>
                             </div>
                             <div className="phones">
-                                <p>908249274292</p>
+                                <p>{ phone }</p>
                             </div>
                         </div>
                         <div className="personalInfo__row email-container">
@@ -86,7 +87,7 @@ const PersonalInfo = () => {
                                 <h4>EMAIL</h4>
                             </div>
                             <div className="emails">
-                                <p>emasesosos@gmail.com</p>
+                                <p>{ email }</p>
                             </div>
                         </div>
                         <div className="personalInfo__row password-container">

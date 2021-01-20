@@ -1,55 +1,67 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import useForm from '../../hooks/useForm';
 import { Header } from './Header';
 import { OptionsProfile } from './OptionsProfile';
 import { Footer } from './Footer';
-import { getOptionsProfileFalse } from '../../redux/actions/profile';
+import { getData, getOptionsProfileFalse, updateProfile } from '../../redux/actions/profile';
 
 
 const PersonalInfoEdicion = () => {
 
-    const [image, setImage] = useState({
-        imageUrl: 'https://res.cloudinary.com/emasesosos/image/upload/v1610838658/addImage_siw6ys.png',
-        name: 'Edit Name', 
-        bio: 'Edit Bio', 
-        phone: 'Edit Phone', 
-        email: 'correo@correo.com.mx', 
-        password: 'Edit Password', 
-    });
-
     const dispatch = useDispatch();
 
-    // const  { name, bio, phone, email, password, optionProfile }  = useSelector(state => state.profileInfo);
-    const  { optionProfile }  = useSelector(state => state.profileInfo);
+    const  { uid }  = useSelector(state => state.auth);
+
+    useEffect(() => {
+        dispatch(getData(uid));
+    }, [dispatch, uid]);
+
+    const  { imageUrl, name, bio, phone, email,  optionProfile }  = useSelector(state => state.profileInfo);
 
     useEffect(() => {
         dispatch(getOptionsProfileFalse());
     }, [dispatch]);
 
     const initialForm = {
-        imageUrl: image.imageUrl, 
-        name: image.name,
-        bio: image.bio,
-        phone: image.phone,
-        email: image.email,
-        password: image.password,
+        name,
+        bio,
+        phone,
+        email,
+        password: '',
     };
 
     const [ formValues, handleInputChange ] = useForm(initialForm);
-    const  { imageUrl, name, bio, phone, email, password }  = formValues;
-
-    const handleEditUser = (e) => {
-        e.preventDefault();
-        console.log(formValues);
-    };
 
     // let history = useHistory();
 
-    // const handleMyProfile = () => {
-    //     history.push('/');
-    // };
+    const handleEditUser = (e) => {
+        e.preventDefault();
+
+        if(formValues.password.length < 6) {
+            return Swal.fire('Error', 'La contraseña debe de ser de al menos 6 caracteres', 'error');
+        }
+
+        let formData = new FormData();
+        const fileField = document.querySelector("input[type='file']");
+
+        console.log('fileField', fileField); 
+        console.log('fileField.files[0]', fileField.files[0]); 
+        formValues.uid = uid;
+        formData.append('imageUrl', fileField.files[0]);
+        formData.append('name', formValues.name);
+        formData.append('bio', formValues.bio);
+        formData.append('phone', formValues.phone);
+        formData.append('email', formValues.email);
+        formData.append('password', formValues.password);
+
+        console.log('formData: ', formData);
+       
+        dispatch(updateProfile(formData, formValues.uid));
+        // history.push('/');
+    };
 
     return (
 
@@ -85,13 +97,11 @@ const PersonalInfoEdicion = () => {
                             <div className="edicion__img">
                                 <div className="custom-file">
                                     <i className="material-icons md-dark md-inactive registro__email-icon" style={{color: "white", fontSize: "20px"}}>camera_alt</i>
-                                    <img src={imageUrl} alt=""/>
+                                    <img src={ imageUrl } alt=""/>
                                     <input 
                                         type="file" 
                                         name="imageUrl" 
                                         className="custom-file-input" 
-                                        id="inputGroupFile01"
-                                        // value={ imageUrl }
                                         onChange={ handleInputChange }
                                     />
                                 </div>
@@ -106,14 +116,14 @@ const PersonalInfoEdicion = () => {
                                     placeholder="Enter Your Name..."
                                     name="name"
                                     className="edicion__control"
-                                    value={ name }
+                                    value={ formValues.name }
                                     onChange={ handleInputChange }
                                 />
                             </div>
                             <div className="edicion__group">
                                 <label htmlFor="">Bio</label>
                                 <textarea 
-                                    value={bio} 
+                                    value={ formValues.bio } 
                                     onChange={ handleInputChange } 
                                     placeholder="Enter Your Bio..."
                                     name="bio"
@@ -127,7 +137,7 @@ const PersonalInfoEdicion = () => {
                                     placeholder="Enter Your Phone..."
                                     name="phone"
                                     className="edicion__control"
-                                    value={ phone }
+                                    value={ formValues.phone }
                                     onChange={ handleInputChange }
                                 />
                             </div>
@@ -138,7 +148,7 @@ const PersonalInfoEdicion = () => {
                                     placeholder="Enter Your Email..."
                                     name="email"
                                     className="edicion__control"
-                                    value={ email }
+                                    value={ formValues.email }
                                     onChange={ handleInputChange }
                                 />
                             </div>
@@ -149,7 +159,7 @@ const PersonalInfoEdicion = () => {
                                     placeholder="Enter Your New Password..."
                                     name="password"
                                     className="edicion__control"
-                                    value={ password }
+                                    value={ formValues.password }
                                     onChange={ handleInputChange }
                                 />
                             </div>
@@ -158,7 +168,6 @@ const PersonalInfoEdicion = () => {
                                     type="submit" 
                                     className="edicion__btn" 
                                     value="Save" 
-                                    // onClick={ handleMyProfile }
                                 />
                             </div>
                         </form>
