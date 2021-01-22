@@ -38,10 +38,22 @@ const getUsuarios = async(req, res = response) => {
 
 // Actualizar Eventos
 const actualizarUsuario = async(req, res = response) => {
-
+    
+    console.log('req.body: ', req.body);
     const usuarioId = req.params.id;
     const { imageUrl, password } = req.body;
-    const result = await cloudinary.v2.uploader.upload(req.file.path);
+
+    console.log('imageUrl: ', imageUrl);
+
+    let imageDefault;
+
+    if(imageUrl) {  
+        console.log('No se subio imagen se queda con la misma');
+        imageDefault = imageUrl; 
+    } else if(imageUrl === 'undefined'){
+        console.log('Hay cambio de imagen');
+        imageDefault = await cloudinary.v2.uploader.upload(req.file.path);
+    }
 
     try {
 
@@ -60,9 +72,12 @@ const actualizarUsuario = async(req, res = response) => {
             ...req.body
         };
 
-        // Url cloudinary
-        nuevoUsuario.imageUrl = result.url;
-        // 
+        // Url Image
+        if(imageUrl) {  
+            nuevoUsuario.imageUrl = imageDefault;
+        } else if(imageUrl === 'undefined'){
+            nuevoUsuario.imageUrl = imageDefault.url;
+        }
 
         // Encriptar nueva contraseña
         const salt = bcrypt.genSaltSync();
@@ -71,19 +86,25 @@ const actualizarUsuario = async(req, res = response) => {
         console.log({ nuevoUsuario });
 
         const usuarioActualizado = await Usuario.findByIdAndUpdate(usuarioId, nuevoUsuario, { new: true });
-        await fs.unlink(req.file.path);
-
+        
+        // Borrar imagen de uploads
+        if(imageUrl === 'undefined'){
+            await fs.unlink(req.file.path);
+        }
+        
         res.status(201).json({
             ok: true,
             usuario: usuarioActualizado
         });
 
-    } catch (error) {
+    } catch(error) {
+
         console.log(error);
         res.status(500).json({
             ok: false,
             msg: 'Hable con el administrador...'
         });
+
     }
 
 };
