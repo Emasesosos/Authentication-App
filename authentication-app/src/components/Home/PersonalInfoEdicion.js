@@ -37,30 +37,52 @@ const PersonalInfoEdicion = () => {
 
     // let history = useHistory();
 
-    const handleEditUser = (e) => {
+    const handleEditUser = async (e) => {
         e.preventDefault();
 
         if(formValues.password.length < 6) {
             return Swal.fire('Error', 'La contraseña debe de ser de al menos 6 caracteres', 'error');
         }
 
-        let formData = new FormData();
+        const url = `http://localhost:4000/api/user/${uid}`;
+        const token = localStorage.getItem('token') || '';
+        console.log('Edicion Url: ', url);
+
+        let formDataImage = new FormData();
         const fileField = document.querySelector("input[type='file']");
 
-        console.log('fileField', fileField); 
-        console.log('fileField.files[0]', fileField.files[0]); 
-        formValues.uid = uid;
-        formData.append('imageUrl', fileField.files[0]);
-        formData.append('name', formValues.name);
-        formData.append('bio', formValues.bio);
-        formData.append('phone', formValues.phone);
-        formData.append('email', formValues.email);
-        formData.append('password', formValues.password);
+        formDataImage.append('imageUrl', fileField.files[0]);
+        const estatusImage = formDataImage.getAll('imageUrl');
 
-        console.log('formData: ', formData);
-       
-        dispatch(updateProfile(formData, formValues.uid));
-        // history.push('/');
+        let formDataFinal = new FormData();
+
+        if(estatusImage[0] === "undefined") {
+            formDataFinal.append('imageUrl', imageUrl);
+        } else {
+            formDataFinal.append('imageUrl', fileField.files[0]);
+        }
+
+        formDataFinal.append('name', formValues.name);
+        formDataFinal.append('bio', formValues.bio);
+        formDataFinal.append('phone', formValues.phone);
+        formDataFinal.append('email', formValues.email);
+        formDataFinal.append('password', formValues.password);
+
+        console.log(formDataFinal.getAll('imageUrl'));
+
+        const resp = await fetch(url, {
+            body: formDataFinal,
+            method: 'PUT',
+            headers: {
+                'x-token': token
+            }
+        });
+
+        const body = await resp.json();
+        console.log('body: ', body);
+
+        // dispatch(updateProfile(formData, formValues.uid));
+        // // history.push('/');
     };
 
     return (
