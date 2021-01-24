@@ -38,27 +38,24 @@ const getUsuarios = async(req, res = response) => {
 
 // Actualizar Eventos
 const actualizarUsuario = async(req, res = response) => {
-    
-    console.log('req.body: ', req.body);
+
     const usuarioId = req.params.id;
     const { imageUrl, password } = req.body;
 
-    console.log('imageUrl: ', imageUrl);
-
     let imageDefault;
 
-    if(imageUrl) {  
-        console.log('No se subio imagen se queda con la misma');
-        imageDefault = imageUrl; 
-    } else if(imageUrl === 'undefined'){
-        console.log('Hay cambio de imagen');
+    if (imageUrl) {
+        // No se subio imagen se queda con la misma
+        imageDefault = imageUrl;
+    } else if (imageUrl === undefined) {
+        // Hay cambio de imagen
         imageDefault = await cloudinary.v2.uploader.upload(req.file.path);
     }
 
     try {
 
         const usuario = await Usuario.findById(usuarioId);
-        console.log({ usuario });
+        // console.log({ usuario });
 
         if (!usuario) {
             return res.status(404).json({
@@ -73,9 +70,9 @@ const actualizarUsuario = async(req, res = response) => {
         };
 
         // Url Image
-        if(imageUrl) {  
+        if (imageUrl) {
             nuevoUsuario.imageUrl = imageDefault;
-        } else if(imageUrl === 'undefined'){
+        } else if (imageUrl === undefined) {
             nuevoUsuario.imageUrl = imageDefault.url;
         }
 
@@ -83,21 +80,20 @@ const actualizarUsuario = async(req, res = response) => {
         const salt = bcrypt.genSaltSync();
         nuevoUsuario.password = bcrypt.hashSync(password, salt);
 
-        console.log({ nuevoUsuario });
-
+        // console.log({ nuevoUsuario });
         const usuarioActualizado = await Usuario.findByIdAndUpdate(usuarioId, nuevoUsuario, { new: true });
-        
+
         // Borrar imagen de uploads
-        if(imageUrl === 'undefined'){
+        if (imageUrl === undefined) {
             await fs.unlink(req.file.path);
         }
-        
+
         res.status(201).json({
             ok: true,
             usuario: usuarioActualizado
         });
 
-    } catch(error) {
+    } catch (error) {
 
         console.log(error);
         res.status(500).json({
