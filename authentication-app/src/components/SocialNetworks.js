@@ -6,10 +6,17 @@ import { Twitter } from './Svg/Twitter';
 
 const SocialNetworks = () => {
 
+    const handleGoogleLogin = () => {
+        // dispatch(startGoogleLogin());
+    };
+
     return (
 
         <div className="socialNet__iconos-sn">
-            <div className="socialNet__google">
+            <div 
+                className="socialNet__google"
+                onClick= { handleGoogleLogin }
+            >
                 <Google />
             </div>
             <div className="socialNet__facebook">

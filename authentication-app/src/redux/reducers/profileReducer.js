@@ -7,7 +7,8 @@ const initialState = {
     bio: '',
     phone: '',
     email: '',
-    optionProfile: ''
+    optionProfile: '',
+    updateProfile: false
 }
 
 export function profileReducer(state = initialState, action) {
@@ -19,12 +20,22 @@ export function profileReducer(state = initialState, action) {
                 ...state,
                 ...action.payload
             }
-        case types.GET_OPTIONS_PROFILE: 
+        case types.GET_OPTIONS_PROFILE:
             return {
                 ...state,
                 ...action.payload
             }
-        case types.PROFILE_LOGOUT: 
+        case types.UPDATE_PROFILE_INI:
+            return {
+                ...state,
+                ...action.payload
+            }
+        case types.UPDATE_PROFILE_FIN:
+            return {
+                ...state,
+                ...action.payload
+            }
+        case types.PROFILE_LOGOUT:
             return {
                 ...initialState
             }

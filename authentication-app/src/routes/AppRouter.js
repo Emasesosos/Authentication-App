@@ -9,9 +9,6 @@ import PersonalInfoEdicion from '../components/Home/PersonalInfoEdicion';
 import { Spinner } from '../components/loading/Spinner';
 import { startChecking } from '../redux/actions/auth';
 
-
-
-
 const AppRouter = () => {
 
     const dispatch = useDispatch(); 

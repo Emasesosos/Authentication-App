@@ -12,6 +12,8 @@ export const types = {
     // User: get user
     GET_PROFILE_INFO: 'get-profile-info',
     GET_OPTIONS_PROFILE: 'get-options-profile',
+    UPDATE_PROFILE_INI: 'update-profile-ini',
+    UPDATE_PROFILE_FIN: 'update-profile-fin',
 
     // User: Logout
     PROFILE_LOGOUT: '[Pofile] Profile Logout'
