@@ -96,9 +96,29 @@ const fetchUpdateProfile = (endPoint, data, uid, method = 'GET') => {
 
 };
 
+// Fecth sin Token Social Net
+const fetchSocialNet = (endPoint, data, method = 'GET') => {
+
+    const url = `${baseUrl}/${endPoint}/${data.email}`; // http://localhost:4000/api/auth/email
+
+    if (method === 'GET') {
+        return fetch(url);
+    } else {
+        return fetch(url, {
+            method,
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
+    }
+
+};
+
 export {
     fetchSinToken,
     fetchConToken,
     fetchGetData,
-    fetchUpdateProfile
+    fetchUpdateProfile,
+    fetchSocialNet
 };

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { startGoogleLogin, startTwitterLogin } from '../redux/actions/auth';
+import { searchUserSn } from '../redux/actions/auth-sn';
 import { Facebook } from './Svg/Facebook';
 import { Github } from './Svg/Github';
 import { Google } from './Svg/Google';
@@ -11,11 +11,11 @@ const SocialNetworks = () => {
     const dispatch = useDispatch();
 
     const handleGoogleLogin = () => {
-        dispatch(startGoogleLogin());
+        dispatch(searchUserSn());
     };
 
     const handleTwitterLogin = () => {
-        dispatch(startTwitterLogin());
+        dispatch(searchUserSn());
     };
 
     return (

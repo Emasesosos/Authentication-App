@@ -1,5 +1,4 @@
 import Swal from "sweetalert2";
-import { firebase, googleAuthProvider, twitterAuthProvider } from './../../firebase/firebase-config';
 import { fetchSinToken, fetchConToken } from './../../helpers/fetch';
 import { types } from './../types/types';
 import { profileLogout } from "./profile";
@@ -26,54 +25,6 @@ export const startLogin = (email, password) => {
         }
 
     };
-
-};
-
-// Inicio Login Google
-export const startGoogleLogin = () => {
-
-    return (dispatch) => {
-        firebase.auth().signInWithPopup(googleAuthProvider)
-            .then(({ user }) => {
-                dispatch(
-                    login({
-                        uid: user.uid,
-                        name: user.displayName
-                    })
-                )
-            });
-    };
-
-    // return (dispatch) => {
-    //     firebase.auth().signInWithPopup(googleAuthProvider)
-    //         .then(userCred => {
-    //             console.log(userCred);
-    //         });
-    // };
-
-};
-
-// Inicio Login Twitter
-export const startTwitterLogin = () => {
-
-    return (dispatch) => {
-        firebase.auth().signInWithPopup(twitterAuthProvider)
-            .then(({ user }) => {
-                dispatch(
-                    login({
-                        uid: user.uid,
-                        name: user.displayName
-                    })
-                )
-            });
-    };
-
-    // return (dispatch) => {
-    //     firebase.auth().signInWithPopup(googleAuthProvider)
-    //         .then(userCred => {
-    //             console.log(userCred);
-    //         });
-    // };
 
 };
 
@@ -127,7 +78,7 @@ export const startChecking = () => {
 };
 
 // Login Usuario
-const login = (user) => {
+export const login = (user) => {
 
     return {
         type: types.AUTH_LOGIN,
