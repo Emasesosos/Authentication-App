@@ -4,22 +4,41 @@ import { fetchSinToken, fetchSocialNet } from './../../helpers/fetch';
 import { login } from './auth';
 
 // Busqueda de usuario de Social Network
-export const searchUserSn = () => {
+export const searchUserSn = (socialNetwork) => {
 
     return async(dispatch) => {
 
-        firebase.auth().signInWithPopup(googleAuthProvider)
+        let authSocialNetwork;
+
+        if(socialNetwork === 'google') {
+            authSocialNetwork = googleAuthProvider;
+        } else if (socialNetwork === 'twitter') {
+            authSocialNetwork = twitterAuthProvider;
+        }
+
+        firebase.auth().signInWithPopup(authSocialNetwork)
             .then(async({ user }) => {
+                let emailFinal;
+                if(socialNetwork === 'twitter') {
+                    emailFinal = 'user@twitter.com';
+                } else if(socialNetwork === 'google') {
+                    emailFinal = user.email
+                }
                 user.password = '123456';
-                const { email, password } = user;
-                const resp = await fetchSocialNet('auth/searchUserSocialNet', { email }, 'GET');
+                const { password } = user;
+                const resp = await fetchSocialNet('auth/searchUserSocialNet', { emailFinal }, 'GET');
                 const body = await resp.json();
                 if (body.ok) { // Login
-                    dispatch(startGoogleLogin(email, password));
+                    dispatch(startGoogleLogin(emailFinal, password));
                 } else { // Register
-                    dispatch(startGoogleRegister(email, password));
+                    dispatch(startGoogleRegister(emailFinal, password));
                 }
             });
+
+        // firebase.auth().signInWithPopup(authSocialNetwork)
+        // .then(async( userCred ) => {
+        //     console.log(userCred);
+        // });
 
     };
 

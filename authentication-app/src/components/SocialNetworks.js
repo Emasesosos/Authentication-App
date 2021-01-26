@@ -11,11 +11,13 @@ const SocialNetworks = () => {
     const dispatch = useDispatch();
 
     const handleGoogleLogin = () => {
-        dispatch(searchUserSn());
+        const socialNetwork = 'google';
+        dispatch(searchUserSn(socialNetwork));
     };
 
     const handleTwitterLogin = () => {
-        dispatch(searchUserSn());
+        const socialNetwork = 'twitter';
+        dispatch(searchUserSn(socialNetwork));
     };
 
     return (
