@@ -113,6 +113,9 @@
             top: 22px;
         }
     }
+    img {
+        width: 100%;
+    }
 }
 
 @media screen and (min-width: $tablet) {
@@ -124,9 +127,6 @@
         }
         .img-container {
             flex: 70%;
-            img {
-                width: 100%;
-            }
         }
     }
     .name-container {
@@ -143,6 +143,7 @@
             flex: 30%;
         }
         .bios {
+            display: flex;
             flex: 70%;
             p {
                 width: 100% !important;
@@ -191,11 +192,6 @@
     border-bottom: 1px solid #E0E0E0;
     padding-bottom: 27.21px;
     margin-top: 29.29px;
-    .bios {
-        p {
-            width: 200px;
-        }
-    }
 }
 
 .phone-container,

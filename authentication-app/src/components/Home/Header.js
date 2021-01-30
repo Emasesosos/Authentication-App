@@ -37,7 +37,10 @@ export const Header = () => {
             </div>
             
             <div className="personalInfo__estatus">
-                <div className="personalInfo__small-image">
+                <div 
+                    className="personalInfo__small-image"
+                    onClick={ handleExpandOptions }
+                >
                     <img src={imageUrl} alt=""/>
                 </div>
                 <div className="personalInfo__name">
