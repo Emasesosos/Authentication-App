@@ -1,44 +1,25 @@
 import Swal from "sweetalert2";
-import { firebase, googleAuthProvider, twitterAuthProvider } from './../../firebase/firebase-config';
+import { firebase, googleAuthProvider } from './../../firebase/firebase-config';
 import { fetchSinToken, fetchSocialNet } from './../../helpers/fetch';
 import { login } from './auth';
 
 // Busqueda de usuario de Social Network
-export const searchUserSn = (socialNetwork) => {
+export const searchUserSn = () => {
 
     return async(dispatch) => {
 
-        let authSocialNetwork;
-
-        if(socialNetwork === 'google') {
-            authSocialNetwork = googleAuthProvider;
-        } else if (socialNetwork === 'twitter') {
-            authSocialNetwork = twitterAuthProvider;
-        }
-
-        firebase.auth().signInWithPopup(authSocialNetwork)
+        firebase.auth().signInWithPopup(googleAuthProvider)
             .then(async({ user }) => {
-                let emailFinal;
-                if(socialNetwork === 'twitter') {
-                    emailFinal = 'user@twitter.com';
-                } else if(socialNetwork === 'google') {
-                    emailFinal = user.email
-                }
                 user.password = '123456';
-                const { password } = user;
-                const resp = await fetchSocialNet('auth/searchUserSocialNet', { emailFinal }, 'GET');
+                const { email, password } = user;
+                const resp = await fetchSocialNet('auth/searchUserSocialNet', { email }, 'GET');
                 const body = await resp.json();
                 if (body.ok) { // Login
-                    dispatch(startGoogleLogin(emailFinal, password));
+                    dispatch(startGoogleLogin(email, password));
                 } else { // Register
-                    dispatch(startGoogleRegister(emailFinal, password));
+                    dispatch(startGoogleRegister(email, password));
                 }
             });
-
-        // firebase.auth().signInWithPopup(authSocialNetwork)
-        // .then(async( userCred ) => {
-        //     console.log(userCred);
-        // });
 
     };
 
@@ -86,23 +67,6 @@ export const startGoogleLogin = (email, password) => {
             Swal.fire('Error', body.msg, 'error');
         }
 
-    };
-
-};
-
-// Inicio Login Twitter
-export const startTwitterLogin = () => {
-
-    return (dispatch) => {
-        firebase.auth().signInWithPopup(twitterAuthProvider)
-            .then(({ user }) => {
-                dispatch(
-                    login({
-                        uid: user.uid,
-                        name: user.displayName
-                    })
-                )
-            });
     };
 
 };
