@@ -1,5 +1,5 @@
 import Swal from "sweetalert2";
-import { firebase, googleAuthProvider, twitterAuthProvider } from './../../firebase/firebase-config';
+import { firebase, googleAuthProvider } from './../../firebase/firebase-config';
 import { fetchSinToken, fetchSocialNet } from './../../helpers/fetch';
 import { login } from './auth';
 
@@ -67,23 +67,6 @@ export const startGoogleLogin = (email, password) => {
             Swal.fire('Error', body.msg, 'error');
         }
 
-    };
-
-};
-
-// Inicio Login Twitter
-export const startTwitterLogin = () => {
-
-    return (dispatch) => {
-        firebase.auth().signInWithPopup(twitterAuthProvider)
-            .then(({ user }) => {
-                dispatch(
-                    login({
-                        uid: user.uid,
-                        name: user.displayName
-                    })
-                )
-            });
     };
 
 };

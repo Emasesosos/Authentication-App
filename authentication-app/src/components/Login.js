@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import { startLogin } from './../redux/actions/auth';
 import DevChallenges from './Svg/DevChallenges';
 import SocialNetworks from './SocialNetworks';
@@ -21,8 +22,11 @@ const Login = () => {
 
     const handleLogin = (e) => {
         e.preventDefault();
-        // console.log(formValues);
-        dispatch(startLogin(email, password));
+        if(password.length < 6) {
+            return Swal.fire('Error', 'La contraseña debe de ser de al menos 6 caracteres', 'error');
+        } else {
+            dispatch(startLogin(email, password));
+        }
     };
 
     return (
