@@ -33,6 +33,10 @@
     display: none;
 }
 
+.personalInfo__small-image {
+    cursor: pointer;
+}
+
 @media screen and (min-width: $tablet) {
     .personalInfo__estatus {
         display: flex;
@@ -50,7 +54,6 @@
         }
     }
     .personalInfo__small-image {
-        cursor: pointer;
         margin-right: 11px;
     }
     .personalInfo__name,
