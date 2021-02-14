@@ -154,7 +154,7 @@ const crearUsuarioSocialNet = async(req, res = response) => {
         usuario = new Usuario(req.body);
 
         // Valores por default del Usuario
-        usuario.imageUrl = 'https://res.cloudinary.com/emasesosos/image/upload/v1610838658/addImage_siw6ys.png';
+        usuario.imageUrl = 'https://res.cloudinary.com/emasesosos/image/upload/v1613335327/addImage_wvgo0m.png';
         usuario.name = 'Edit Name';
         usuario.bio = 'Edit Bio';
         usuario.phone = 'Edit Phone';
