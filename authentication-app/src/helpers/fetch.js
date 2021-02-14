@@ -1,4 +1,5 @@
-const baseUrl = process.env.REACT_APP_API_URL;
+const baseUrl = 'https://mern-autenticacion.herokuapp.com/api'; // Producción
+// const baseUrl = process.env.REACT_APP_API_URL; // Desarrollo
 
 // Fecth sin Token
 const fetchSinToken = (endPoint, data, method = 'GET') => {
